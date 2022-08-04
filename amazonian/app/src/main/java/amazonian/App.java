@@ -3,9 +3,12 @@
  */
 package amazonian;
 
+import java.util.ArrayList;
 
-public class App {
-    
+public class App {  
+    ArrayList<Clients> clients = new ArrayList<Clients>();  
+    ArrayList<Orders> orders = new ArrayList<Orders>();
+    ArrayList<Invoices> invoices = new ArrayList<Invoices>();
 
     public static void main(String[] args) {
         Products fertilizer = new Products(1, "Fertilizer", 20.00, 100.00);

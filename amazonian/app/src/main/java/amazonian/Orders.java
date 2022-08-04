@@ -8,7 +8,8 @@ public class Orders {
     private Integer clientId;
     private boolean urgency = false;
     private HashMap<String,Integer> productsOrdered = new HashMap<String, Integer>();
-    private Integer minOrder = 1000;
+    private Double minOrder = 1000.00;
+    private Invoices invoice = new Invoices(clientId, orderId);
 
     public Orders(Integer orderId, Integer clientId) {
         this.orderId = orderId;
@@ -27,7 +28,7 @@ public class Orders {
         return this.urgency;
     }
 
-    public Integer getMinOrder() {
+    public Double getMinOrder() {
         return this.minOrder;
     }
 
@@ -43,7 +44,7 @@ public class Orders {
         productsOrdered.put(name, quantity);
     }
 
-    public void calculateTotalOrderPrice(Catalogue catalogue) {
+    public Double calculateTotalOrderPrice(Catalogue catalogue) {
         Double totalToReturn = 0.00;
         // Get the Product Prices from the Catalogue
         HashMap<String,Double> productPrices = catalogue.getProductPricesForOrderTotal();
@@ -58,10 +59,24 @@ public class Orders {
 
             totalToReturn += cost;
         }
+       
+        orderValidConfirmation(totalToReturn);
 
-        System.out.println(totalToReturn);
+        return totalToReturn;
 
+    }
+
+    private Boolean checkMinimumOrderValue(Double total) {
+        return total >= minOrder;
+    }
+
+    private void orderValidConfirmation(Double totalToReturn) {
+        if (checkMinimumOrderValue(totalToReturn)) {
+            System.out.println(totalToReturn);
+        } else {
+            System.out.println("The minimum total value for an order is 1000.00. Please add some more items to your order");
         }
+    }
 
 }
 
