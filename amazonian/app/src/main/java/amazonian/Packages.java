@@ -40,7 +40,7 @@ public class Packages {
         //function to maximum weight of package is 50kg, split an order in different packages, as little packages as possible
         //receive a HashMap {["1":1500]["2":500]}
         //how many packages?
-        HashMap<Integer,Double> pickedProducts = new HashMap<Integer,Double>();
+        // HashMap<Integer,Double> pickedProducts = new HashMap<Integer,Double>();
         
     }
 
