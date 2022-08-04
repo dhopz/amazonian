@@ -1,5 +1,7 @@
 package amazonian;
 
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,11 +11,16 @@ public class Orders {
     private boolean urgency = false;
     private HashMap<String,Integer> productsOrdered = new HashMap<String, Integer>();
     private Integer minOrder = 1000;
+    // private Invoices invoice = new Invoices(clientId, orderId,);
 
     public Orders(Integer orderId, Integer clientId) {
         this.orderId = orderId;
         this.clientId = clientId;
     }
+
+    // public Invoices getInvoice(){
+    //     return this.invoice;
+    // }
 
     public Integer getOrderId() {
         return this.orderId;
@@ -43,7 +50,7 @@ public class Orders {
         productsOrdered.put(name, quantity);
     }
 
-    public void calculateTotalOrderPrice(Catalogue catalogue) {
+    public Double calculateTotalOrderPrice(Catalogue catalogue) {
         Double totalToReturn = 0.00;
         // Get the Product Prices from the Catalogue
         HashMap<String,Double> productPrices = catalogue.getProductPricesForOrderTotal();
@@ -60,8 +67,37 @@ public class Orders {
         }
 
         System.out.println(totalToReturn);
+        return totalToReturn;
+    }
 
+    public void generateInvoice(AllCustomers customers, Catalogue catalogue){
+        Double orderValueTotal = calculateTotalOrderPrice(catalogue);
+        Invoices invoice = new Invoices(this.clientId, this.orderId, orderValueTotal); //and the total amount  for vat creation.
+        System.out.printf("this the the invoice %d \n",invoice.getOrderId());
+
+        // find the customer in the customers arraylist using the clientId
+        ArrayList<Clients> theseAreMyClients = customers.getClients();       
+        System.out.println(customers.getClients());
+
+        // System.out.println(theseAreMyClients.indexOf(client.clientId));
+        // add the invoice to the customers Invoices arraylist
+        for(Clients client: theseAreMyClients){
+            System.out.println(client.getName());
+            client.addInvoices(invoice);
         }
+        //
+
+
+    }
+
+        // if (totalToReturn>minOrder){
+        //     Invoices invoice = new Invoices(this.clientId, this.orderId); //and the total amount  for vat creation.
+        //     System.out.printf("this the the invoice %d \n",invoice.getOrderId());
+
+        // }
+
+
+    // public void addOrder
 
 }
 

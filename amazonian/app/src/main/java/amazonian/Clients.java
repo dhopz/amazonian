@@ -6,6 +6,7 @@ public class Clients {
     private String name;
     private String address;
     private ArrayList<Orders> orders = new ArrayList<Orders>();
+    private ArrayList<Invoices> customersInvoices = new ArrayList<Invoices>();    
     private Integer clientId;
     private boolean cashInAdvance = true;
     final Integer minOrder = 1000;
@@ -36,6 +37,14 @@ public class Clients {
     private boolean isOrderValid(Orders order) {
         // return order.Value() >=10000;
         return true;
+    }
+
+    public void addInvoices(Invoices invoice){
+        this.customersInvoices.add(invoice);
+    }
+
+    public ArrayList<Invoices> getInvoices(){
+        return this.customersInvoices;
     }
 
     public void addOrders(Orders order) {

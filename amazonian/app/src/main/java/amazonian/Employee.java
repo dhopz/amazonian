@@ -1,7 +1,5 @@
 package amazonian;
 
-import java.util.jar.Attributes.Name;
-
 public class Employee {
     private String name;
     private Integer employeeId;
