@@ -8,7 +8,7 @@ public class Clients {
     private ArrayList<Orders> orders = new ArrayList<Orders>();
     private ArrayList<Invoices> customersInvoices = new ArrayList<Invoices>();    
     private Integer clientId;
-    private boolean cashInAdvance = true;
+    private Boolean cashInAdvance = true;
     final Integer minOrder = 1000;
 
     public Clients(String name, String address, Integer clientId) {
@@ -16,6 +16,10 @@ public class Clients {
         this.address = address;
         this.clientId = clientId;
         
+    }
+
+    public Boolean getCashInAdvance(){
+        return this.cashInAdvance;
     }
 
     public String getAddress() {

@@ -18,10 +18,6 @@ public class Orders {
         this.clientId = clientId;
     }
 
-    // public Invoices getInvoice(){
-    //     return this.invoice;
-    // }
-
     public Integer getOrderId() {
         return this.orderId;
     }
@@ -68,23 +64,22 @@ public class Orders {
        
         orderValidConfirmation(totalToReturn);
 
-        System.out.println(totalToReturn);
+        // System.out.println(totalToReturn);
         return totalToReturn;
     }
 
     public void generateInvoice(AllCustomers customers, Catalogue catalogue){
         Double orderValueTotal = calculateTotalOrderPrice(catalogue);
         Invoices invoice = new Invoices(this.clientId, this.orderId, orderValueTotal); //and the total amount  for vat creation.
-        System.out.printf("this the the invoice %d \n",invoice.getOrderId());
+        // System.out.printf("this the the invoice %d \n",invoice.getOrderId());
 
         // find the customer in the customers arraylist using the clientId
         ArrayList<Clients> theseAreMyClients = customers.getClients();       
-        System.out.println(customers.getClients());
+        // System.out.println(customers.getClients());
 
         // System.out.println(theseAreMyClients.indexOf(client.clientId));
         // add the invoice to the customers Invoices arraylist
         for(Clients client: theseAreMyClients){
-            System.out.println(client.getName());
             client.addInvoices(invoice);
         }
     }
