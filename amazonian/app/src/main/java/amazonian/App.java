@@ -3,10 +3,25 @@
  */
 package amazonian;
 
+
 public class App {
     
 
     public static void main(String[] args) {
-        Products product = new Products(1, "Fertilizer", 20.00, 10.00);
+        Products fertilizer = new Products(1, "Fertilizer", 20.00, 100.00);
+        Products seeds = new Products(2, "Seeds", 5.00, 50.00);
+        Orders order = new Orders(1, 1);
+
+        order.addProducts("Fertilizer", 2);
+        order.addProducts("Seeds",3);
+
+        Catalogue catalogue = new Catalogue();
+
+        catalogue.addProductToCatalogue(fertilizer);
+        catalogue.addProductToCatalogue(seeds);  
+
+        //catalogue.getProductPricesForOrderTotal();
+        order.calculateTotalOrderPrice(catalogue);
+
     }
 }
