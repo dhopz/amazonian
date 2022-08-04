@@ -1,18 +1,18 @@
 package amazonian;
 
-import java.math.BigDecimal;
+// import java.math.BigDecimal;
 
 public class Products {
     private Integer id;
     private String name;
-    private BigDecimal weight;
-    private BigDecimal price;
+    private Double weight;
+    private Double price;
 
     public Products(
         Integer id,
         String name,
-        BigDecimal weight,
-        BigDecimal price
+        Double weight,
+        Double price
     ){
         this.id = id;
         this.name = name;
@@ -28,11 +28,11 @@ public class Products {
         return this.id;
     }
 
-    public BigDecimal getWeight(){
+    public Double getWeight(){
         return this.weight;
     }
 
-    public BigDecimal getPrice(){
+    public Double getPrice(){
         return this.price;
     }
 
