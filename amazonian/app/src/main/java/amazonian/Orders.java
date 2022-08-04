@@ -45,29 +45,23 @@ public class Orders {
 
     public void calculateTotalOrderPrice(Catalogue catalogue) {
         Double totalToReturn = 0.00;
+        // Get the Product Prices from the Catalogue
         HashMap<String,Double> productPrices = catalogue.getProductPricesForOrderTotal();
 
+
+        // Iterate over the product order and calculate the total prices.
         for (Map.Entry<String, Integer> set : this.productsOrdered.entrySet()) { 
-            // Printing all elements of a Map
-            System.out.println(set.getKey() + " = " + set.getValue());
             Double thisissomething = productPrices.get(set.getKey());
             Integer thisisthequantity = set.getValue();
 
             Double cost = thisissomething * thisisthequantity;
 
             totalToReturn += cost;
-         
-            // System.out.printf("This is the price %s this is the quantity %s \n",thisissomething, thisisthequantity);
-            // System.out.printf("This is the cost %s \n",cost);
         }
 
         System.out.println(totalToReturn);
 
-        // for (Map.Entry<String, Double> set : productPrices.entrySet()) { 
-        //     // Printing all elements of a Map
-        //     System.out.println(set.getKey() + " = " + set.getValue());
-        // }
-    }
+        }
 
 }
 
