@@ -29,7 +29,7 @@ public class App {
         order.addProducts("Seeds",3);
 
         Orders order2 = new Orders(3333, 1, catalogue);
-        order2.addProducts("Fertilizer", 1000);
+        order2.addProducts("Fertilizer", 100);
         order2.addProducts("Seeds",5); 
 
         Orders order3 = new Orders(1234, 2, catalogue);
@@ -56,6 +56,8 @@ public class App {
         }
 
         Warehouse warehouse = new Warehouse("London", database);
+
+        warehouse.createTruckLoads();
 
 
         // warehouse.getDatabaseOrders();

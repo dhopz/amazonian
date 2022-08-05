@@ -61,6 +61,7 @@ public class Orders {
     }
 
     public void addProducts(String name, Integer quantity) {
+        //if total weight is greater than 2000kg this wont be allowed
         productsOrdered.put(name, quantity);
     }
 
@@ -101,6 +102,8 @@ public class Orders {
     private Boolean checkMinimumOrderValue(Double total) {
         return total >= this.minOrder;
     }
+
+    
 
     public void orderValidConfirmation(Double totalToReturn) {
         if (checkMinimumOrderValue(totalToReturn)) {

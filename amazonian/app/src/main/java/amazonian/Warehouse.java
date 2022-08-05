@@ -58,6 +58,24 @@ public class Warehouse {
         return totalPackages * 50.0;
     }
 
+    public Boolean checkWeightMax(Orders order){
+        if (totalWeightofOrder(order)>= 2000){
+            System.out.println("Order Invalid - Exceeds truck load capacity");
+        } else {
+            System.out.println("something something");
+        }
+        return true;
+    }
+
+    public void createTruckLoads(){
+        ArrayList<Double> truckWeights = new ArrayList<Double>();
+        
+        for (Orders order: ordersToBeDelivered()){
+            truckWeights.add(totalWeightofOrder(order));
+        }
+        System.out.println(truckWeights);
+    }
+
     // private Array
 
     // public ArrayList<Orders> getDataOrders(){
