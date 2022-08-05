@@ -4,7 +4,7 @@ public class Invoices {
     private Integer clientId;
     private Integer orderId;
     private Double orderTotal;
-    private boolean paid = true;
+    private Boolean paid = true;
 
     public Invoices (Integer clientId, Integer orderId, Double orderTotal) {
         this.clientId = clientId;
@@ -16,7 +16,7 @@ public class Invoices {
         return this.clientId;
     }
 
-    public boolean getPaidStatus(){
+    public Boolean getPaidStatus(){
         return this.paid;
     }
     // Generate total would take in a hashmap and calculate the total

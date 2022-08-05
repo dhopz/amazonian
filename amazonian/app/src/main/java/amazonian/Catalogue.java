@@ -28,7 +28,7 @@ public class Catalogue {
         for (Products product : this.allProducts) {
             productPrices.put(product.getName(),product.getPrice());
         }
-        System.out.println(productPrices);
+        // System.out.println(productPrices);
 
         return productPrices;
 

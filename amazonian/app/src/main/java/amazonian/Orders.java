@@ -11,11 +11,14 @@ public class Orders {
     private boolean urgency = false;
     private HashMap<String,Integer> productsOrdered = new HashMap<String, Integer>();
     private Double minOrder = 1000.00;
+    private Double finalTotal;
+    private Catalogue catalogue;
     // private Invoices invoice = new Invoices(clientId, orderId,);
 
-    public Orders(Integer orderId, Integer clientId) {
+    public Orders(Integer orderId, Integer clientId, Catalogue catalogue) {
         this.orderId = orderId;
         this.clientId = clientId;
+        this.catalogue = catalogue;
     }
 
     public Integer getOrderId() {
@@ -46,10 +49,11 @@ public class Orders {
         productsOrdered.put(name, quantity);
     }
 
-    public Double calculateTotalOrderPrice(Catalogue catalogue) {
+    public void calculateTotalOrderPrice() {
         Double totalToReturn = 0.00;
         // Get the Product Prices from the Catalogue
-        HashMap<String,Double> productPrices = catalogue.getProductPricesForOrderTotal();
+        HashMap<String,Double> productPrices = this.catalogue.getProductPricesForOrderTotal();
+
 
 
         // Iterate over the product order and calculate the total prices.
@@ -65,32 +69,34 @@ public class Orders {
         orderValidConfirmation(totalToReturn);
 
         // System.out.println(totalToReturn);
-        return totalToReturn;
     }
 
-    public void generateInvoice(AllCustomers customers, Catalogue catalogue){
-        Double orderValueTotal = calculateTotalOrderPrice(catalogue);
-        Invoices invoice = new Invoices(this.clientId, this.orderId, orderValueTotal); //and the total amount  for vat creation.
+    public void generateInvoice(AllCustomers customers){
+        calculateTotalOrderPrice();
+        if (this.finalTotal != null) {
+            Invoices invoice = new Invoices(this.clientId, this.orderId, this.finalTotal); //and the total amount  for vat creation.
         // System.out.printf("this the the invoice %d \n",invoice.getOrderId());
-
         // find the customer in the customers arraylist using the clientId
-        ArrayList<Clients> theseAreMyClients = customers.getClients();       
+        // ArrayList<Clients> theseAreMyClients = customers.getClients();       
         // System.out.println(customers.getClients());
-
+        customers.addInvoices(invoice);
         // System.out.println(theseAreMyClients.indexOf(client.clientId));
         // add the invoice to the customers Invoices arraylist
-        for(Clients client: theseAreMyClients){
-            client.addInvoices(invoice);
+        // for(Clients client: theseAreMyClients){
+        //     client.addInvoices(invoice);
+        // }
         }
+        
     }
 
     private Boolean checkMinimumOrderValue(Double total) {
-        return total >= minOrder;
+        return total >= this.minOrder;
     }
 
-    private void orderValidConfirmation(Double totalToReturn) {
+    public void orderValidConfirmation(Double totalToReturn) {
         if (checkMinimumOrderValue(totalToReturn)) {
             System.out.println(totalToReturn);
+            this.finalTotal = totalToReturn;
         } else {
             System.out.println("The minimum total value for an order is 1000.00. Please add some more items to your order");
         }
