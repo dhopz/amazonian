@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Database {
     private ArrayList<Clients> allClients = new ArrayList<Clients>();
     private ArrayList<Invoices> allInvoices = new ArrayList<Invoices>();
-    private ArrayList<Orders> allOrders = new ArrayList<Orders>();
+    // private ArrayList<Orders> allOrders = new ArrayList<Orders>();
 
 
     public Database(){
@@ -24,9 +24,9 @@ public class Database {
 
     }
 
-    public void addOrders(Orders orders){
-        allOrders.add(orders);
-    }
+    // public void addOrders(Orders orders){
+    //     allOrders.add(orders);
+    // }
 
     public ArrayList<Clients> getClients(){
         return this.allClients;
@@ -36,9 +36,9 @@ public class Database {
         return this.allInvoices;
     }
 
-    public ArrayList<Orders> getOrders(){
-        return this.allOrders;
-    }
+    // public ArrayList<Orders> getOrders(){
+    //     return this.allOrders;
+    // }
 
 
 }

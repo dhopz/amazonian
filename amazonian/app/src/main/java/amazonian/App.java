@@ -59,8 +59,9 @@ public class App {
 
 
         // warehouse.getDatabaseOrders();
-        // warehouse.getAllOrders();
-        System.out.println(warehouse.getDataOrders());
+        warehouse.getAllOrders();
+        warehouse.ordersToBePackaged();
+        // System.out.println(warehouse.getDataOrders());
 
         //catalogue.getProductPricesForOrderTotal();
         // order.calculateTotalOrderPrice(catalogue);
