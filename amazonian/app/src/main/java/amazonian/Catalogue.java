@@ -34,16 +34,16 @@ public class Catalogue {
 
     }
 
-    public HashMap<String,Double> getProductWeightsForPackaging(){
+    // public HashMap<String,Double> getProductWeightsForPackaging(){
         
-        HashMap<String, Double> productWeights = new HashMap<>();  
+    //     HashMap<String, Double> productWeights = new HashMap<>();  
 
-        for (Products product : this.allProducts) {
-            productWeights.put(product.getName(),product.getWeight());
-        }
-        // System.out.println(productPrices);
+    //     for (Products product : this.allProducts) {
+    //         productWeights.put(product.getName(),product.getWeight());
+    //     }
+    //     // System.out.println(productPrices);
 
-        return productWeights;
+    //     return productWeights;
 
-    }
+    // }
 }

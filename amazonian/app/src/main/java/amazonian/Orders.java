@@ -13,7 +13,7 @@ public class Orders {
     private Double minOrder = 1000.00;
     private Double finalTotal;
     private Catalogue catalogue;
-    private Boolean packaged = false;
+    private Boolean dispatched = false;
     // private Invoices invoice = new Invoices(clientId, orderId,);
 
 
@@ -24,16 +24,16 @@ public class Orders {
     }
 
 
-    public HashMap<String,Integer> getProductsordered(){
+    public HashMap<String,Integer> getProductsOrdered(){
         return this.productsOrdered;
     }
 
-    public Boolean getPackaged() {
-        return packaged;
+    public Boolean getDispatched() {
+        return dispatched;
     }
 
-    public void setPackaged(Boolean packaged) {
-        this.packaged = packaged;
+    public void setDispatched(Boolean dispatched) {
+        this.dispatched = dispatched;
     }
 
     public Integer getOrderId() {

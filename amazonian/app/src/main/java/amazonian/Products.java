@@ -11,12 +11,11 @@ public class Products {
     public Products(
         Integer id,
         String name,
-        Double weight,
         Double price
     ){
         this.id = id;
         this.name = name;
-        this.weight = weight;
+        this.weight = 50.00;
         this.price = price;        
     }
 

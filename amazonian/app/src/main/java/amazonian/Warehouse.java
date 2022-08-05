@@ -1,6 +1,7 @@
 package amazonian;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 
 public class Warehouse {
@@ -23,7 +24,7 @@ public class Warehouse {
         System.out.println(this.database);
     }
 
-    public ArrayList<Orders> getAllOrders(){
+    private ArrayList<Orders> getAllOrders(){
         //from the database, get all clients arraylist of orders and combine into 1
 
         for (Clients client: this.database.getClients()){
@@ -38,15 +39,26 @@ public class Warehouse {
         return this.allOrders;    
     }
 
-    public void ordersToBePackaged(){
-        ArrayList<Orders> ordersForPackaging = new ArrayList<Orders>();
+    private ArrayList<Orders> ordersToBeDelivered(){
+        ArrayList<Orders> ordersForDelivery = new ArrayList<Orders>();
         for (Orders order: getAllOrders()){
-            if (order.getPackaged()==false){
-                ordersForPackaging.add(order);
+            if (order.getDispatched()==false){
+                ordersForDelivery.add(order);
             }
         }
-        System.out.println(ordersForPackaging);
+        return ordersForDelivery;
     }
+
+    private Double totalWeightofOrder(Orders order) {
+        Integer totalPackages = 0;
+
+        for(Map.Entry<String,Integer> map : order.getProductsOrdered().entrySet()){
+            totalPackages += map.getValue();
+        }
+        return totalPackages * 50.0;
+    }
+
+    // private Array
 
     // public ArrayList<Orders> getDataOrders(){
     //     return this.allOrders;

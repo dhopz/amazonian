@@ -17,8 +17,8 @@ public class App {
         database.addClients(NewmanJoe);
         database.addClients(FaHaroon);
 
-        Products fertilizer = new Products(1, "Fertilizer", 20.00, 100.00);
-        Products seeds = new Products(2, "Seeds", 5.00, 50.00);
+        Products fertilizer = new Products(1, "Fertilizer",100.00);
+        Products seeds = new Products(2, "Seeds", 50.00);
 
         Catalogue catalogue = new Catalogue();
         catalogue.addProductToCatalogue(fertilizer);
@@ -59,8 +59,8 @@ public class App {
 
 
         // warehouse.getDatabaseOrders();
-        warehouse.getAllOrders();
-        warehouse.ordersToBePackaged();
+        // warehouse.getAllOrders();
+        // warehouse.ordersToBePackaged();
         // System.out.println(warehouse.getDataOrders());
 
         //catalogue.getProductPricesForOrderTotal();
