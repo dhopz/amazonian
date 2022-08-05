@@ -33,4 +33,17 @@ public class Catalogue {
         return productPrices;
 
     }
+
+    public HashMap<String,Double> getProductWeightsForPackaging(){
+        
+        HashMap<String, Double> productWeights = new HashMap<>();  
+
+        for (Products product : this.allProducts) {
+            productWeights.put(product.getName(),product.getWeight());
+        }
+        // System.out.println(productPrices);
+
+        return productWeights;
+
+    }
 }

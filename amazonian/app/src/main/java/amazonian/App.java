@@ -11,9 +11,11 @@ public class App {
     ArrayList<Invoices> invoices = new ArrayList<Invoices>();
 
     public static void main(String[] args) {
-        AllCustomers customerList = new AllCustomers();
+        Database database = new Database();
         Clients NewmanJoe = new Clients("Joe Newman", "London", 1);
-        customerList.addClients(NewmanJoe);
+        Clients FaHaroon = new Clients("Haroon Fatih","Ealing",2);
+        database.addClients(NewmanJoe);
+        database.addClients(FaHaroon);
 
         Products fertilizer = new Products(1, "Fertilizer", 20.00, 100.00);
         Products seeds = new Products(2, "Seeds", 5.00, 50.00);
@@ -28,25 +30,37 @@ public class App {
 
         Orders order2 = new Orders(3333, 1, catalogue);
         order2.addProducts("Fertilizer", 1000);
-        order2.addProducts("Seeds",5);        
+        order2.addProducts("Seeds",5); 
+
+        Orders order3 = new Orders(1234, 2, catalogue);
+        order3.addProducts("Fertilizer", 333);
+        order3.addProducts("Seeds",333); 
 
         // Invoices invoice = new Invoices(clientName, clientAddress, orderTotal, listOfItemsAndQuantities);
 
         NewmanJoe.addOrders(order);
         NewmanJoe.addOrders(order2);
+        FaHaroon.addOrders(order3);
 
         // trying to add a invoice to the customer
-        order.generateInvoice(customerList);
-        order2.generateInvoice(customerList);
-
+        order.generateInvoice(database);
+        order2.generateInvoice(database);
+        order3.generateInvoice(database);
 
         // System.out.println(NewmanJoe.getInvoices());
         // System.out.println(NewmanJoe.getOrders());    
         
-        for (Invoices invoice: customerList.getInvoices()){
+        for (Invoices invoice: database.getInvoices()){
             System.out.printf("Details for Invoice: %d || Paid Status: %s || Amount: %3.2f%n", invoice.getOrderId(),invoice.getPaidStatus(),invoice.getOrderInvoiceTotal());
         
         }
+
+        Warehouse warehouse = new Warehouse("London", database);
+
+
+        // warehouse.getDatabaseOrders();
+        // warehouse.getAllOrders();
+        System.out.println(warehouse.getDataOrders());
 
         //catalogue.getProductPricesForOrderTotal();
         // order.calculateTotalOrderPrice(catalogue);

@@ -2,12 +2,13 @@ package amazonian;
 
 import java.util.ArrayList;
 
-public class AllCustomers {
+public class Database {
     private ArrayList<Clients> allClients = new ArrayList<Clients>();
     private ArrayList<Invoices> allInvoices = new ArrayList<Invoices>();
+    private ArrayList<Orders> allOrders = new ArrayList<Orders>();
 
 
-    public AllCustomers(){
+    public Database(){
 
     }
 
@@ -23,12 +24,20 @@ public class AllCustomers {
 
     }
 
+    public void addOrders(Orders orders){
+        allOrders.add(orders);
+    }
+
     public ArrayList<Clients> getClients(){
         return this.allClients;
     }
 
     public ArrayList<Invoices> getInvoices(){
         return this.allInvoices;
+    }
+
+    public ArrayList<Orders> getOrders(){
+        return this.allOrders;
     }
 
 

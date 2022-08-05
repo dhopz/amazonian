@@ -1,9 +1,9 @@
 package amazonian;
 
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class Orders {
     private Integer orderId;
@@ -13,12 +13,27 @@ public class Orders {
     private Double minOrder = 1000.00;
     private Double finalTotal;
     private Catalogue catalogue;
+    private Boolean packaged = false;
     // private Invoices invoice = new Invoices(clientId, orderId,);
+
 
     public Orders(Integer orderId, Integer clientId, Catalogue catalogue) {
         this.orderId = orderId;
         this.clientId = clientId;
         this.catalogue = catalogue;
+    }
+
+
+    public HashMap<String,Integer> getProductsordered(){
+        return this.productsOrdered;
+    }
+
+    public Boolean getPackaged() {
+        return packaged;
+    }
+
+    public void setPackaged(Boolean packaged) {
+        this.packaged = packaged;
     }
 
     public Integer getOrderId() {
@@ -71,23 +86,17 @@ public class Orders {
         // System.out.println(totalToReturn);
     }
 
-    public void generateInvoice(AllCustomers customers){
+    public void generateInvoice(Database database){
         calculateTotalOrderPrice();
         if (this.finalTotal != null) {
             Invoices invoice = new Invoices(this.clientId, this.orderId, this.finalTotal); //and the total amount  for vat creation.
-        // System.out.printf("this the the invoice %d \n",invoice.getOrderId());
-        // find the customer in the customers arraylist using the clientId
-        // ArrayList<Clients> theseAreMyClients = customers.getClients();       
-        // System.out.println(customers.getClients());
-        customers.addInvoices(invoice);
-        // System.out.println(theseAreMyClients.indexOf(client.clientId));
-        // add the invoice to the customers Invoices arraylist
-        // for(Clients client: theseAreMyClients){
-        //     client.addInvoices(invoice);
-        // }
-        }
-        
+        database.addInvoices(invoice);
+        }        
     }
+
+    // private void sendOrderToWarehouse(Warehouse warehouse){
+    //     // 
+    // }
 
     private Boolean checkMinimumOrderValue(Double total) {
         return total >= this.minOrder;
